@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -33,7 +34,8 @@ public class DataRestTest {
     void givenNoting_whenRequestingArticles_thenReturnsArticlesJsonResponse() throws Exception {
         mvc.perform(get("/api/articles"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
+                .andExpect(content().contentType(MediaType.valueOf("application/hal+json")))
+                .andDo(print());
 
     }
 }
