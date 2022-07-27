@@ -20,13 +20,12 @@ class ArticleControllerTest {
         this.mvc = mvc;
     }
 
-    @Disabled("구현중")
     @DisplayName("articles page")
     @Test
     void givenNoting_whenRequestArticlesView_thenReturnArticlesView() throws Exception {
         mvc.perform(get("/articles"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.TEXT_HTML))
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("articles/index"))
                 .andExpect(model().attributeExists("articles"));
     }
