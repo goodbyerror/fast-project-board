@@ -1,5 +1,6 @@
 package com.fastcampus.projectboard.controller;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,24 +20,30 @@ class ArticleControllerTest {
         this.mvc = mvc;
     }
 
+    @Disabled("구현중")
     @DisplayName("articles page")
     @Test
     void givenNoting_whenRequestArticlesView_thenReturnArticlesView() throws Exception {
         mvc.perform(get("/articles"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.TEXT_HTML))
+                .andExpect(view().name("articles/index"))
                 .andExpect(model().attributeExists("articles"));
     }
 
+    @Disabled("구현중")
     @DisplayName("article view page")
     @Test
     void givenNoting_whenRequestArticleView_thenReturnArticleView() throws Exception {
         mvc.perform(get("/articles/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.TEXT_HTML))
-                .andExpect(model().attributeExists("article"));
+                .andExpect(view().name("articles/view"))
+                .andExpect(model().attributeExists("article"))
+                .andExpect(model().attributeExists("articleComments"));
     }
 
+    @Disabled("구현중")
     @DisplayName("article search view")
     @Test
     void givenNoting_whenRequestArticlesSearching_thenReturnArticlesSearching() throws Exception {
@@ -46,6 +53,7 @@ class ArticleControllerTest {
                 .andExpect(model().attributeExists("article"));
     }
 
+    @Disabled("구현중")
     @DisplayName("article hashtag search view")
     @Test
     void givenNoting_whenRequestArticlesHashTagSearching_thenReturnArticlesHashTagSearching() throws Exception {
