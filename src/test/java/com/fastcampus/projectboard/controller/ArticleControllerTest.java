@@ -36,7 +36,7 @@ class ArticleControllerTest {
     void givenNoting_whenRequestArticleView_thenReturnArticleView() throws Exception {
         mvc.perform(get("/articles/1"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.TEXT_HTML))
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("articles/view"))
                 .andExpect(model().attributeExists("article"))
                 .andExpect(model().attributeExists("articleComments"));
@@ -48,7 +48,7 @@ class ArticleControllerTest {
     void givenNoting_whenRequestArticlesSearching_thenReturnArticlesSearching() throws Exception {
         mvc.perform(get("/articles/search"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.TEXT_HTML))
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(model().attributeExists("article"));
     }
 
@@ -58,7 +58,7 @@ class ArticleControllerTest {
     void givenNoting_whenRequestArticlesHashTagSearching_thenReturnArticlesHashTagSearching() throws Exception {
         mvc.perform(get("/articles/search-hashtag"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.TEXT_HTML))
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(model().attributeExists("article"));
     }
 
