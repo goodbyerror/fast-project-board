@@ -20,6 +20,7 @@ class ArticleControllerTest {
         this.mvc = mvc;
     }
 
+    @Disabled
     @DisplayName("articles page")
     @Test
     void givenNoting_whenRequestArticlesView_thenReturnArticlesView() throws Exception {
@@ -30,6 +31,7 @@ class ArticleControllerTest {
                 .andExpect(model().attributeExists("articles"));
     }
 
+    @Disabled
     @DisplayName("article view page")
     @Test
     void givenNoting_whenRequestArticleView_thenReturnArticleView() throws Exception {
